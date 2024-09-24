@@ -1,5 +1,5 @@
 <script>
-  let email = '';
+let email = '';
   let password = '';
 
   const handleSubmit = async () => {
@@ -11,8 +11,14 @@
       body: JSON.stringify({ email, password })
     });
 
-    const result = await response.json();
-    console.log(result);
+    if (response.ok) {
+      // Redirect to the choice page on successful login
+      window.location.href = '/choice'; // New route for choosing between plant or weed detection
+    } else {
+      const result = await response.json();
+      console.error(result);
+      alert('Invalid email or password');
+    }
   };
 </script>
 

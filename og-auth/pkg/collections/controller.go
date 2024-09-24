@@ -2,7 +2,7 @@ package collections
 
 import (
 	"encoding/json"
-	"fmt"
+	
 	"net/http"
 	"strconv"
 
@@ -59,20 +59,21 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func CheckUser(w http.ResponseWriter, r *http.Request) {
-	CreateUser := &models.Reg{}
-	utils.ParseBody(r, CreateUser)
-	ans := models.GetUserByEmailLogin(CreateUser.Email, CreateUser.Password)
-	if ans == "success" {
-		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, "login successful")
-		return
-	}
+    CreateUser := &models.Reg{}
+    utils.ParseBody(r, CreateUser)
+    ans := models.GetUserByEmailLogin(CreateUser.Email, CreateUser.Password)
+    if ans == "success" {
+        w.WriteHeader(http.StatusOK)
+        json.NewEncoder(w).Encode(map[string]string{"message": "login successful"})
+        return
+    }
 
-	if ans == "fail" {
-		http.Error(w, "email/password is incorrect", http.StatusUnauthorized)
-		return
-	}
+    if ans == "fail" {
+        http.Error(w, `{"error": "email/password is incorrect"}`, http.StatusUnauthorized)
+        return
+    }
 }
+
 
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
