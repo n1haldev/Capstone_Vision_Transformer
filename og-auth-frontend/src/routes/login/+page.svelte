@@ -1,4 +1,7 @@
 <script>
+
+import Navbar from "$lib/Navbar.svelte";
+
 let email = '';
   let password = '';
 
@@ -24,7 +27,7 @@ let email = '';
 
 <style>
   body {
-    background: url('og-auth-frontend\static\capstone_login.jpg') no-repeat center center fixed;
+    background: url('./plant_bgi.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -35,13 +38,21 @@ let email = '';
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #fff;
+    background: rgba(50, 50, 50, 0.8); /* Slightly lighter black-gray with transparency */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
   }
 
   .form-group {
     margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .form-group a {
+    color: #007bff;
+    text-decoration: none;
   }
 
   .form-input {
@@ -49,6 +60,7 @@ let email = '';
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 4px;
+    background-color: #fff;
   }
 
   .form-button {
@@ -66,26 +78,27 @@ let email = '';
   }
 </style>
 
-<div class="form-container">
-  <form on:submit|preventDefault={handleSubmit}>
-    <div class="form-group">
-      <input type="email" bind:value={email} placeholder="Email" class="form-input" required>
+<body>
+  <Navbar activePage="login" />
+  <div class="form-container">
+    <h2 style="color: chartreuse; text-align: center;">Login</h2>
+      <form on:submit|preventDefault={handleSubmit}>
+        <div class="form-group">
+          <input type="email" bind:value={email} placeholder="Email" class="form-input" required>
+        </div>
+    
+        <div class="form-group">
+          <input type="password" bind:value={password} placeholder="Password" class="form-input" required>
+        </div>
+    
+        <div class="form-group">
+          <button type="submit" class="form-button">Login</button>
+        </div>
+    
+        <div class="form-group">
+          Haven't made an account yet?
+          <a href="/register">Register</a>
+        </div>
+      </form>
     </div>
-
-    <div class="form-group">
-      <input type="password" bind:value={password} placeholder="Password" class="form-input" required>
-    </div>
-
-    <div class="form-group">
-      <button type="submit" class="form-button">Login</button>
-    </div>
-
-    <div class="form-group">
-      Haven't made an account yet?
-    </div>
-
-    <div class="form-group">
-      <a href="http://localhost:5173/register">Register</a>
-    </div>
-  </form>
-</div>
+</body>

@@ -1,4 +1,7 @@
 <script>
+  // export const activePage="register"
+  import Navbar from "$lib/Navbar.svelte";
+
   let email = '';
   let password = '';
   let confirmPassword = '';
@@ -35,7 +38,7 @@
 
 <style>
   body {
-    background: url('/capstone_login.jpg') no-repeat center center fixed;
+    background: url('./plant_bgi.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -46,7 +49,7 @@
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #fff;
+    background: rgba(50, 50, 50, 0.8); /* Slightly lighter black-gray with transparency */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -58,70 +61,56 @@
   }
 
   .form-input {
-    width: 100%;
+    width: 95%;
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 4px;
+    background: #fff; /* Ensure full opacity for input elements */
   }
 
-  .form-button {
+  button {
     width: 100%;
     padding: 0.5rem;
-    background-color: #007bff;
+    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
   }
 
-  .form-button:hover {
+  button:hover {
     background-color: #0056b3;
-  }
-
-  .redirect-message {
-    font-size: 1.2rem;
-    color: #007bff;
-    margin-top: 1rem;
-    opacity: 0;
-    animation: fadeIn 1s forwards, swoosh 1s 1s forwards;
-  }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes swoosh {
-    to {
-      transform: translateX(100%);
-    }
   }
 </style>
 
-<div class="form-container">
-  <form on:submit|preventDefault={handleSubmit}>
-    <div class="form-group">
-      <input type="email" bind:value={email} placeholder="Email" class="form-input" required />
-    </div>
-
-    <div class="form-group">
-      <input type="text" bind:value={name} placeholder="Name" class="form-input" required />
-    </div>
-
-    <div class="form-group">
-      <input type="password" bind:value={password} placeholder="Password" class="form-input" required />
-    </div>
-
-    <div class="form-group">
-      <input type="password" bind:value={confirmPassword} placeholder="Confirm Password" class="form-input" required />
-    </div>
-
-    <div class="form-group">
-      <button type="submit" class="form-button">Register</button>
-    </div>
-  </form>
-  {#if isRedirecting}
-    <div class="redirect-message">I am being redirected to the login page...</div>
-  {/if}
-</div>
+<body>
+  <Navbar activePage="register" />
+  <div class="form-container">
+    <h2 style="color: chartreuse; text-align: center;">Register</h2>
+    <form on:submit|preventDefault={handleSubmit}>
+      <div class="form-group">
+        <input type="email" bind:value={email} placeholder="Email" class="form-input" required />
+      </div>
+  
+      <div class="form-group">
+        <input type="text" bind:value={name} placeholder="Name" class="form-input" required />
+      </div>
+  
+      <div class="form-group">
+        <input type="password" bind:value={password} placeholder="Password" class="form-input" required />
+      </div>
+  
+      <div class="form-group">
+        <input type="password" bind:value={confirmPassword} placeholder="Confirm Password" class="form-input" required />
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" class="form-button">Register</button>
+      </div>
+    </form>
+    {#if isRedirecting}
+      <div class="redirect-message">I am being redirected to the login page...</div>
+    {/if}
+  </div>
+</body>
