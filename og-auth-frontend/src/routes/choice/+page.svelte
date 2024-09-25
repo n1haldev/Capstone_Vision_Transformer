@@ -78,7 +78,7 @@
 </style>
 
 <body>
-  <Navbar activePage="home" />
+  <Navbar activePage="choice" />
   <div class="hero">
     <h1>Welcome to PlantVision</h1>
     <p>Empowering Farmers and Academics with Advanced Plant Detection</p>

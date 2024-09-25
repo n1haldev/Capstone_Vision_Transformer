@@ -49,6 +49,7 @@
     <div class="nav-links">
       <a href="/" class="nav-link {activePage === 'home' ? 'active' : ''}" >Home</a>
       <a href="/contact" class="nav-link {activePage === 'contact' ? 'active' : ''}">Contact</a>
+      <a href="/choice" class="nav-link {activePage === 'choice' ? 'active' : ''}">Choice</a>
       <a href="/login" class="nav-link {activePage === 'login' ? 'active' : ''}">Login</a>
       <a href="/register" class="nav-link {activePage === 'register' ? 'active' : ''}">Register</a>
     </div>
