@@ -56,7 +56,7 @@ let email = '';
   }
 
   .form-input {
-    width: 100%;
+    width: 95%;
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -95,10 +95,10 @@ let email = '';
           <button type="submit" class="form-button">Login</button>
         </div>
     
-        <div class="form-group">
-          Haven't made an account yet?
-          <a href="/register">Register</a>
-        </div>
       </form>
+      <div class="form-group">
+        Haven't made an account yet?
+        <a href="/register">Register</a>
+      </div>
     </div>
 </body>

@@ -1,39 +1,98 @@
 <script>
-  import { goto } from '$app/navigation'; // Correct import for navigation
+  import Navbar from "$lib/Navbar.svelte";
+  import { goto } from '$app/navigation';
+  let choice = "";
 
-let choice = '';
-
-const handleSelection = (/** @type {string} */ selected) => { // Explicitly typing 'selected' as a string
-  choice = selected;
-
-  if (selected === 'plant') {
-    // Navigate to the Plant Species Detection page
-    goto('/plant-detection'); // Redirects to /plant-detection route
-  } else if (selected === 'weed') {
-    // Navigate to the Weed Detection and Classification page
-    goto('/weed-detection'); // Redirects to /weed-detection route
-  }
-};
-
+  const handleSelection = () => {
+    if (choice === "plant") {
+      goto("/plant-detection");
+    } else if (choice === "weed") {
+      goto("/weed-detection");
+    }
+  };
 </script>
-  
-  <style>
-    .option {
-      margin: 1rem;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      text-align: center;
-      background-color: #f5f5f5;
-    }
-    .option:hover {
-      background-color: #ddd;
-    }
-  </style>
-  
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-no-static-element-interactions -->
-  <div class="option" on:click={() => handleSelection('plant')}>Plant Species Detection</div>
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <div class="option" on:click={() => handleSelection('weed')}>Weed Detection and Classification</div>
-  
+
+<style>
+  body {
+    background: url('./plant_bgi.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+  }
+
+  .services {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .service {
+    width: 45%;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .service img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .service h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .service:hover {
+    background-color: lightblue;
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .service p {
+    font-size: 1rem;
+    color: #555;
+  }
+</style>
+
+<body>
+  <Navbar activePage="home" />
+  <div class="hero">
+    <h1>Welcome to PlantVision</h1>
+    <p>Empowering Farmers and Academics with Advanced Plant Detection</p>
+  </div>
+  <div class="services">
+    <div class="service">
+      <img src="./weed_detection_icon_resized.png" alt="Weed Detection">
+      <h2>Weed Detection for Farmers</h2>
+      <p>Utilize our advanced YOLOv5 model to detect weeds in your field and improve crop yield.</p>
+    </div>
+    <div class="service">
+      <img src="./plant_species_identification.jpg" alt="Plant Species Identification">
+      <h2>Plant Species Identification for Academics</h2>
+      <p>Identify plant species accurately for your research and academic projects using our cutting-edge technology.</p>
+    </div>
+  </div>
+</body>

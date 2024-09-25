@@ -31,7 +31,7 @@
     // Wait for animation to complete
     setTimeout(() => {
       // Redirect to the login page
-      window.location.href = 'http://localhost:5173/login';
+      window.location.href = '/login';
     }, 4000); // Adjust this to match the duration of your animation
   };
 </script>
@@ -79,6 +79,16 @@
     font-size: 16px;
   }
 
+  .form-group {
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .form-group a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
   button:hover {
     background-color: #0056b3;
   }
@@ -109,6 +119,11 @@
         <button type="submit" class="form-button">Register</button>
       </div>
     </form>
+
+    <div class="form-group">
+      Haven't made an account yet?
+      <a href="/login">Login</a>
+    </div>
     {#if isRedirecting}
       <div class="redirect-message">I am being redirected to the login page...</div>
     {/if}
