@@ -1,0 +1,29 @@
+# Virtual environment
+myenv/
+
+# BFG report (generated files from BFG cleaner)
+.bfg-report/
+
+# Cache and compiled files
+__pycache__/
+*.pyc
+
+# Temporary or generated data files
+allfiles.txt
+# weed_detected.jpg
+
+# YOLO model outputs and checkpoints (if they are generated)
+# yolov5_model/test/
+# yolov5_model/train/
+# yolov5_model/val/
+
+# Environment and configuration files
+.env  # If you use any secret environment files
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
