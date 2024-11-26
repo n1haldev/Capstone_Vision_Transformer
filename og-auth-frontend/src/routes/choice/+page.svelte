@@ -14,7 +14,7 @@
 
 <style>
   body {
-    background: url('./plant_bgi.jpg') no-repeat center center fixed;
+  
     background-size: cover;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -84,7 +84,7 @@
     <p>Empowering Farmers and Academics with Advanced Plant Detection</p>
   </div>
   <div class="services">
-    <div class="service">
+    <div class="service" on:click = {() => goto('/weed-detection')}>
       <img src="./weed_detection_icon_resized.png" alt="Weed Detection">
       <h2>Weed Detection for Farmers</h2>
       <p>Utilize our advanced YOLOv5 model to detect weeds in your field and improve crop yield.</p>
